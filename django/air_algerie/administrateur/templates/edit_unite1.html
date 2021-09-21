@@ -1,0 +1,197 @@
+{% extends 'base_admin.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+<a class="btn bg-gradient-dark w-10" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">Modification d'unité</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+            
+           
+    
+                
+                                    <table class="table align-items-center mb-0" id="">
+                                        <tbody>
+                                            <form method="" action="">
+
+                                            <tr>
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code unité</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <input type="text" class="form-control" value="" name='nom'>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom unité</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <input type="text" class="form-control" value="" name='prenom'>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Réseau d'unité</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <select class="form-control" >
+                                                        <option>International</option>
+                                                        <option>National</option>
+
+                                                    </select>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pays d'unité</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <input type="text" class="form-control" value="" name='username'>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Monnaie d'unité</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <input type="text" class="form-control" value="" name='username'>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Commeriale</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <select class="form-control" >
+                                                        <option>Oui</option>
+                                                        <option>Non</option>
+
+                                                    </select>                                                </td>
+                                            </tr>
+
+
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etranger</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <select class="form-control" >
+                                                        <option>Oui</option>
+                                                        <option>Non</option>
+
+                                                    </select>                                                    </td>
+                                            </tr>
+
+
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tresorie</th>
+                                                <td class="align-middle text-center text-sm">
+
+                                                    <select class="form-control" >
+                                                        <option>Oui</option>
+                                                        <option>Non</option>
+
+                                                    </select>                                                    </td>
+                                            </tr>
+
+
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trafic Indicateur</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <select class="form-control" >
+                                                        <option>Oui</option>
+                                                        <option>Non</option>
+
+                                                    </select>                                                    </td>
+                                            </tr>
+                                               
+                                        
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Emission Indicateur</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <select class="form-control" >
+                                                        <option>Oui</option>
+                                                        <option>Non</option>
+
+                                                    </select>                                                    </td>
+                                            </tr>
+            
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Recette Indicateur</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <select class="form-control" >
+                                                        <option>Oui</option>
+                                                        <option>Non</option>
+
+                                                    </select>                                                    </td>
+                                            </tr>
+
+
+                                            <tr>
+
+                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Exploitation Indicateur</th>
+                                                <td class="align-middle text-center text-sm">
+                                                    <select class="form-control" >
+                                                        <option>Oui</option>
+                                                        <option>Non</option>
+
+                                                    </select>                                                    </td>
+                                            </tr>
+                
+                                                <tr>
+                
+                                                
+                
+                                                    <td class="align-middle text-center text-sm">
+                                                        <button class="btn bg-gradient-danger">  Modifier &nbsp;<i class="fas fa-pen-square"></i></button>
+                                                    </td>
+                                            </form>
+                                            </tr>
+                
+                                        </tbody>
+                
+                
+                
+                                    </table>
+                
+                
+                
+                
+                
+                                    <tr>
+                
+                
+                
+                
+                
+                                        </tbody>
+                                        </table>
+                
+                                </div>
+                            </div>
+                
+                
+                
+                        </div>
+                    </div>
+                
+                
+                
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock body %}

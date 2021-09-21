@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">BUDGET Actualisé</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unité</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Réseau</th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for u in unite %}
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{u.unite.code_unite}}</h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">{{u.unite.reseau}}</p>
+                            </td>
+
+
+
+
+
+
+
+
+                            <td class="align-middle">
+                                <form action="{% url 'pre_consulter_actualisation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-secondary w-100 mb-0" name="id" value="{{u.unite.id}}"><i class="fas fa-eye"></i>
+                      Consulter</button>
+                                </form>
+
+
+
+                            </td>
+
+                        </tr>
+                        {% endfor %}
+
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

@@ -39,6 +39,7 @@ def user_login(request):
         'form':form_login
     }
     return render(request,'login.html' , context)
+    
 #cette fonction traite la page logout
 def logout_page(request):
     logout(request)
@@ -108,14 +109,15 @@ def edit_trafic_proposition(request):
     u=unite_1.objects.get(id=request.session['unite'])
     pv=entete_pv.objects.get(unite=u,annee=current_year,type="proposition")
     p=proposition.objects.filter(pv=pv,type='trafic')
+    
     context = {
         'pro': p,
-        'unite':u
+        'unite':u,
+    
     }
     return render(request,'edit_proposition_trafic.html',context)
 
 #MODIFICATION TRAFIC PROPOSITION
- 
 def update_trafic_proposition(request):
     current_year=request.session['annee']
     u=unite_1.objects.get(id=request.session['unite'])
@@ -127,16 +129,23 @@ def update_trafic_proposition(request):
     p = profile.objects.get(user=request.user)
     name = str(p.nom_user) + '' + str(p.prenom_user)
     date_modif=datetime.now()
-
-
+    print('*********************')
+    print(commentaire)
+    
+   
 
     for i in range(len(cloture)) :
        p=proposition.objects.get(type='trafic',pv=pv,rubrique=rubrique[i])
+       degre = request.POST.getlist('degre'+rubrique[i])
+       print(degre)
+       print('*********************')
        p.cloture=cloture[i]
        p.prevision=prevision[i]
        p.commentaire=commentaire[i]
+       if (len(degre)>0):
+            p.commentaire_degre= degre[0]
        p.save()
-    
+      
     h = historique(annee=pv.annee,type="proposition",type_1="trafic",user=name,date_h=date_modif)
     h.save()
     

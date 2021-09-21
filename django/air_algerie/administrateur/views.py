@@ -1,11 +1,14 @@
-from django.shortcuts import render,redirect
-from .forms import *
-from cadre_bud.models import *
-from .filters import *
-
-from django.contrib.auth.models import User
 from datetime import datetime
-from django.contrib.auth import authenticate,login, logout
+
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
+
+from cadre_bud.models import *
+
+from .filters import *
+from .forms import *
+
 
 def admin_user(request):
     if (not request.user.is_authenticated):

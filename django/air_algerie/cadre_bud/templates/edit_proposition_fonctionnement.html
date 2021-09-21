@@ -1,0 +1,151 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+
+<div class="container-fluid py-4">
+
+
+    <div class="row">
+        <div class="col-8">
+            <div class="numbers">
+
+                <a class="btn bg-gradient-dark w-10" href="..\proposition_depense"><i class="fas fa-arrow-left"></i></a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--          TABLES AFFICHAGE              -->
+
+
+<!-- PROPOSITION emission -->
+<div class="row my-4">
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="row">
+                    <div class="col-lg-6 col-7">
+                        <h3>PROPOSITION FONCTIONNEMENT</h3>
+
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Unité : </span> {{unite}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Code monnaie : </span> {{unite.lib_monnaie}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Réglé par : </span> Unité
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+                    <table class="table align-items-center mb-0" id="tableau_pv">
+                        <tbody>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Compte(scf)</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RUBRIQUES</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Réglé Par</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Monnaie</th>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cloture</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prévision (n+1)</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Commentaire</th>
+
+
+                            </tr>
+                            <form method="POST" action="{% url 'update_fonctionnement_proposition' %}">
+                                {% csrf_token %} {% for p in pro %}
+                                <tr>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{p.scf}}" name="scf" aria-label="Name" aria-describedby="email-addon"></th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{p.rubrique}}" name="rubrique" aria-label="Name" aria-describedby="email-addon"></th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{p.regler_par}}" name="regler" aria-label="Name" aria-describedby="email-addon"></th>
+
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><select class="form-control" name="monnaie">
+                                        {% for m in monnaie %}
+                                        <option value="{{m.code_monnaie}}">{{m.code_monnaie}}</option>
+                                    
+                            
+                                        {% endfor %}</select></th>
+
+                                    <td class="align-middle text-center text-sm">
+                                        <input type="number" class="form-control" value={{p.cloture}} name='cloture'>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <input type="number" class="form-control" value={{p.prevision}} name='prevision'>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <textarea type="text" class="form-control" name="commentaire" value="{{p.commentaire}}" aria-label="Name" aria-describedby="email-addon"></textarea>
+                                    </td>
+                                </tr>
+
+
+
+
+
+
+                                {% endfor %}
+                                <tr>
+                                    <td class="align-middle text-center text-sm">
+                                        <button class="btn bg-gradient-warning"><i class="fas fa-edit"></i>  Modifié</button>
+                                    </td>
+                            </form>
+                            </tr>
+
+                        </tbody>
+
+
+
+                    </table>
+
+
+
+
+
+                    <tr>
+
+
+
+
+
+                        </tbody>
+                        </table>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock body %}

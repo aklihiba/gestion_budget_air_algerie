@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block user %}
+  {{user}}
+{% endblock user %}
+  
+
+{% block poste %}
+  {{poste}}
+{% endblock poste %}
+{% block body %}
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+  <div class="numbers">
+                      
+    <a class="btn bg-gradient-dark w-10" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+
+  </div>
+  <div class="card">
+    <div class="card-header text-center pt-4">
+      <h6 class="mb-0">REALISATION DE BUDGET</h6>
+    </div>
+    <div class="card-body pt-4 p-3">
+      <ul class="list-group">
+        
+        {% if unite.Trafic_Indicateur == "Y" %}
+        <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+          <div class="d-flex flex-column">
+            <h6 class="mb-3 text-sm">Trafic</h6>
+          </div>
+          <div class="ms-auto">
+            <form action="{% url 'realisation_trafic' %}" method="POST">
+              {% csrf_token %}
+              <button class="btn bg-gradient-secondary w-100 mb-0" name="id" value="{{u.id}}"><i class="fas fa-eye"></i>
+                Consulter</button>
+            </form>
+          </div>
+        </li>
+        {% endif %}
+          
+        
+        <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+          <div class="d-flex flex-column">
+            <h6 class="mb-3 text-sm">Recette</h6>
+          </div>
+          <div class="ms-auto">
+            <form action="{% url 'realisation_recette' %}" method="POST">
+              {% csrf_token %}
+              <button class="btn bg-gradient-secondary w-100 mb-0" name="id" value="{{u.id}}"><i class="fas fa-eye"></i>
+                Consulter</button>
+            </form>
+          </div>
+        </li>
+
+        {% if unite.Emission_Indicateur == "Y" %}
+
+
+        <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+          <div class="d-flex flex-column">
+            <h6 class="mb-3 text-sm">Chiffre d'affaire à l'emission</h6>
+          </div>
+          <div class="ms-auto">
+            <form action="{% url 'realisation_emission' %}" method="POST">
+              {% csrf_token %}
+              <button class="btn bg-gradient-secondary w-100 mb-0" name="id" value="{{u.id}}"><i class="fas fa-eye"></i>
+                Consulter</button>
+            </form>
+          </div>
+        </li>
+        {% endif %}
+
+
+        <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+          <div class="d-flex flex-column">
+            <h6 class="mb-3 text-sm">Les dépenses</h6>
+          </div>
+          <div class="ms-auto">
+            <form action="{% url 'realisation_depense' %}" method="POST">
+              {% csrf_token %}
+              <button class="btn bg-gradient-secondary w-100 mb-0" name="id" value="{{u.id}}"><i class="fas fa-eye"></i>
+                Consulter</button>
+            </form>
+          </div>
+
+
+
+          </td>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
+  

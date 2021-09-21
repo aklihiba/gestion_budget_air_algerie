@@ -149,6 +149,7 @@ class proposition(models.Model):
     scf = models.IntegerField(blank=True,null=True)  
     rempli=models.BooleanField(default=False,blank=True)  
     commentaire = models.CharField(max_length=100,null=True,blank=True)
+    commentaire_degre = models.IntegerField(null=True, blank=True)
     regler_par = models.CharField(max_length=100,null=True,blank=True)
     monnie = models.CharField(max_length=100,null=True,blank=True)
    

@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="numbers">
+
+        <a class="btn bg-gradient-dark w-10" href="..\realisation_budgetaire"><i class="fas fa-arrow-left"></i></a>
+
+    </div>
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">REALISATION DE BUDGET</h6>
+        </div>
+        <div class="card-body pt-4 p-3">
+            <ul class="list-group">
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                        <h6 class="mb-3 text-sm">FONCTIONNEMENT</h6>
+                    </div>
+
+
+                    {% if fonct == False %}
+                    <div class="ms-auto">
+                        <a class="btn bg-gradient-dark w-100" href="..\realisation_fonctionnement"> <i class="fas fa-pen-square"></i> Remplir</a>
+                    </div>
+                    {% else %}
+                    <div class="ms-auto">
+
+                        <a class="btn bg-gradient-success w-100" href="..\edit_fonctionnement_realisation"> Déja traité <i class="far fa-check-circle"></i></a>
+                    </div>
+                    {% endif %}
+
+
+
+
+
+
+
+
+                </li>
+
+
+
+
+
+                {% if unite.Exploitation_Indicateur == "Y" %}
+
+
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                        <h6 class="mb-3 text-sm">EXPLOITATION</h6>
+                    </div>
+
+
+                    {% if expl == False %}
+                    <div class="ms-auto">
+                        <a class="btn bg-gradient-dark w-100" href="..\realisation_exploitation"> <i class="fas fa-pen-square"></i> Remplir</a>
+                    </div>
+                    {% else %}
+                    <div class="ms-auto">
+
+                        <a class="btn bg-gradient-success w-100" href="..\edit_exploitation_realisation"> Déja traité <i class="far fa-check-circle"></i></a>
+                    </div>
+                    {% endif %}
+
+
+
+
+
+
+
+                </li>
+
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

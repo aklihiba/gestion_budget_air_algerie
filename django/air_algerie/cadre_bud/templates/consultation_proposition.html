@@ -1,0 +1,63 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="numbers">
+
+        <a class="btn bg-gradient-dark w-10" href="..\pre_pre_proposition_budgetaire"><i class="fas fa-arrow-left"></i></a>
+
+    </div>
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">CONSULTATION DES PROPOSITIONS BUDGET</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ANNEE</th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for p in pv %}
+                        <tr>
+
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">{{p.annee}}</p>
+                            </td>
+
+
+
+
+
+
+
+
+                            <td class="align-middle">
+                                <form action="{% url 'intermed_pv_proposition' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-secondary w-100 mb-0" name="annee" value="{{p.annee}}">Consulter</button>
+                                </form>
+
+
+                            </td>
+
+
+                        </tr>
+                        {% endfor %}
+
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

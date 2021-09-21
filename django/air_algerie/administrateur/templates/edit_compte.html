@@ -1,0 +1,85 @@
+{% extends 'base_admin.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+<a class="btn bg-gradient-dark w-10" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">Modification du compte </h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+
+
+
+
+                <table class="table align-items-center mb-0" id="">
+                    <tbody>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SCf</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{compte.scf}}</th>
+
+                            </tr>
+                            <tr>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">LIB</th>
+                                <td class="align-middle text-center text-sm">
+                                    {{form.lib}}
+                                </td>
+                           
+                            </tr>
+
+                            <tr>
+
+                                <td class="align-middle text-center text-sm" colspan="2">
+                                    <button class="btn bg-gradient-danger" type="submit">  Modifier &nbsp;<i class="fas fa-pen-square"></i></button>
+                                </td>
+                        </form>
+                        </tr>
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+                <tr>
+
+
+
+
+
+                    </tbody>
+                    </table>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock body %}

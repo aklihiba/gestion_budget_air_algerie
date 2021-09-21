@@ -1,0 +1,139 @@
+{% extends 'base_admin.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+<a class="btn bg-gradient-dark w-10" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">Modification d'un Utilisateur</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+
+
+
+
+                <table class="table align-items-center mb-0" id="">
+                    <tbody>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
+                                <td class="align-middle text-center text-sm">
+                                    {{form.nom}}
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prénom</th>
+                                <td class="align-middle text-center text-sm">
+                                    {{form.prenom}}
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type d'utilisateur</th>
+                                <td class="align-middle text-center text-sm">
+                                    {{form.type_u}}
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom d'utilisateur</th>
+                                <td class="align-middle text-center text-sm">
+                                    {{form.user_name}}
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mot de passe</th>
+                                <td class="align-middle text-center text-sm">
+                                    {{form.password}}
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Confirmation Mot de passe</th>
+                                <td class="align-middle text-center text-sm">
+                                    {{form.password2}}
+                                </td>
+                            </tr>
+
+
+
+
+
+
+
+                            <tr>
+
+
+
+                                <td class="align-middle text-center text-sm" colspan="2">
+                                    <button class="btn bg-gradient-danger" type="button" data-toggle="modal" data-target="#exampleModalCenter100">  Modifier &nbsp;<i class="fas fa-user-plus"></i></button>
+                                </td>
+
+                                <!--modal-->
+                                <div class="modal fade" id="exampleModalCenter100" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                    
+                                        <div class="modal-body">
+                                          Voulez vous vraiment modifier cet utilisateur ?
+                                        </div>
+                                        <div class="modal-footer">
+                                          <a  type="button" class="btn btn-secondary" data-dismiss="modal">Non</a>
+                                          <button type="submit" class="btn bg-gradient-danger">Modifier</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                        </form>
+                        </tr>
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+                <tr>
+
+
+
+
+
+                    </tbody>
+                    </table>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock body %}

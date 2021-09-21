@@ -1,0 +1,117 @@
+{% extends 'base_admin.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">Utilisateurs Unite</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-secondary opacity-7"></th>
+                            <th class="text-secondary opacity-7"></th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-body px-0 pb-2">
+            <div class="table-responsive">
+
+                <table class="table align-items-center mb-0" id="tableau_pv">
+                    <tbody>
+                        <tr>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">PROFILE</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">UNITE</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+
+
+
+                        </tr>
+
+
+                        {% for p in up %}
+
+                        <tr>
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.pro}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.unite}}</th>
+
+
+                                <td class="align-middle text-center text-sm ">
+                                    <button class="btn bg-gradient-danger " type="button " data-toggle="modal" data-target="#{{p.id}}" name="id" value="{{p.id}}">  Supprimer &nbsp;<i class="fas fa-user-minus "></i></button>
+                                </td>
+                         
+                        </tr>
+
+                        <div class="modal fade" id="{{p.id}}" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-body">
+                                  <p>Voulez-vous vraiment supprimer cette unité à cet utilisateur ?</p>
+                                </div>
+                                <div class="modal-footer">
+                                  
+                            <form action="{% url 'delete_up' %} " method="POST">
+                                {% csrf_token %}
+                                  <button type="submit" class="btn btn-danger" value="{{p.id}}" name="id" > Oui , Supprimer</button>
+                                </form>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        {% endfor %}
+
+                        <tr>
+
+
+
+                        </tr>
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+                <tr>
+
+
+
+
+
+                    </tbody>
+                    </table>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock body %}

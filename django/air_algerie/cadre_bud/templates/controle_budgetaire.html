@@ -1,0 +1,1143 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="numbers">
+
+        <a class="btn bg-gradient-dark w-10" href="..\pre_controle_budgetaire"><i class="fas fa-arrow-left"></i></a>
+
+    </div>
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">CONTROLE BUDGETAIRE</h6>
+        </div>
+        <div class="card-body pt-4 p-3">
+            <ul class="list-group">
+
+                {% if unite.Trafic_Indicateur == "Y" %}
+                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb text-sm">Trafic</h6>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td>
+
+                                {% if tjanvier == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if tfevrier == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if tmars == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if tavril == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if tmai == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if tjuin == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                {% if tjuillet == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if taout == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if tseptembre == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if toctobre == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if tnovembre == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if tdecembre == False %}
+                                <form action="{% url 'get_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_mounth_controle' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+
+                        </tr>
+                    </table>
+                </li>
+                {% endif %}
+
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-3 text-sm">Recette</h6>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+
+                                {% if rjanvier == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if rfevrier == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if rmars == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if ravril == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if rmai == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if rjuin == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                {% if rjuillet == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if raout == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if rseptembre == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if roctobre == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if rnovembre == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if rdecembre == False %}
+                                <form action="{% url 'controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_recette' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+
+                        </tr>
+                    </table>
+                </li>
+
+                {% if unite.Emission_Indicateur == "Y" %}
+
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-3 text-sm">C.A à l'emission</h6>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+
+                                {% if ejanvier == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if efevrier == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if emars == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if eavril == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if emai == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if ejuin == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                {% if ejuillet == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if eaout == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if eseptembre == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if eoctobre == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if enovembre == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if edecembre == False %}
+                                <form action="{% url 'controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_emission' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+
+                        </tr>
+                    </table>
+                </li>
+                {% endif %}
+
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-3 text-sm">FONCTIONNEMENT</h6>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+
+                                {% if fjanvier == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if ffevrier == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if fmars == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if favril == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if fmai == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if fjuin == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                {% if fjuillet == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if faout == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if fseptembre == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if foctobre == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if fnovembre == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if fdecembre == False %}
+                                <form action="{% url 'controle_depense' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_fonctionnement' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+
+                        </tr>
+                    </table>
+
+
+                </li>
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="d-flex flex-column">
+                                    <h6 class="mb-3 text-sm">EXPLOITATION</h6>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+
+                                {% if xjanvier == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="janvier" name="mois"> <i class="far fa-calendar-alt"></i> JANVIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xfevrier == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="fevrier" name="mois"> <i class="far fa-calendar-alt"></i> FEVRIER </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xmars == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mars" name="mois"> <i class="far fa-calendar-alt"></i> MARS </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xavril == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="avril" name="mois"> <i class="far fa-calendar-alt"></i> AVRIL </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xmai == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="mai" name="mois"> <i class="far fa-calendar-alt"></i> MAI </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xjuin == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juin" name="mois"> <i class="far fa-calendar-alt"></i> JUIN </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                                {% if xjuillet == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="juillet" name="mois"> <i class="far fa-calendar-alt"></i> JUILLET </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xaout == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="aout" name="mois"> <i class="far fa-calendar-alt"></i> AOUT </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xseptembre == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="septembre" name="mois"> <i class="far fa-calendar-alt"></i> SEPTEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xoctobre == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="octobre" name="mois"> <i class="far fa-calendar-alt"></i> OCTOBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xnovembre == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="novembre" name="mois"> <i class="far fa-calendar-alt"></i> NOVEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+                            <td>
+
+                                {% if xdecembre == False %}
+                                <form action="{% url 'controle_depense2' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-dark w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+                                {% else %}
+                                <form action="{% url 'edit_controle_exploitation' %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="btn bg-gradient-success w-100 mb-0" value="decembre" name="mois"> <i class="far fa-calendar-alt"></i> DECEMBRE </button>
+                                </form>
+
+                                {% endif %}
+
+
+                            </td>
+
+                        </tr>
+                    </table>
+
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,641 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+
+<div class="container-fluid py-4">
+
+
+    <div class="row">
+        <div class="col-8">
+            <div class="numbers">
+
+                <a class="btn bg-gradient-dark w-10" href="..\reunion_budgetaire"><i class="fas fa-arrow-left"></i></a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--          TABLES AFFICHAGE              -->
+
+
+
+<div class="row my-4">
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="row">
+                    <div class="col-lg-6 col-7">
+                        <h3>REUNION TRAFIC</h3>
+
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Unité : </span> {{unite}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Code monnaie : </span> {{unite.lib_monnaie}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Réglé par : </span> Unité
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+                    <table class="table align-items-center mb-0" id="tableau_pv">
+                        <tbody>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RUBRIQUES</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Réalisation (n-2)</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Réalisation (n-1)</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Notifié N</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Controle Budgetaire</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Cloture</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prévision (n+1)</th>
+
+                            </tr>
+                            {% for c in compte %}
+
+                            <tr>
+
+                                {% if profile.type_user == "cadre_bud" %} {% if c.cadre1 == False and c.cdd1 == False and c.sd1 == False or c.cadre1 == True and c.cdd1 == False and c.sd1 == False %} {% if c.is_valide == False %}
+
+                                <form method="post" action="{% url 'verifier_trafic' %}">
+                                    {% csrf_token %}
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.proposition}}" name="compte" aria-label="Name" aria-describedby="email-addon"></th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_2}}</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_1}}</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">2021</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.controle_budgetaire}}--{{c.mois_controle}}</th>
+
+
+
+
+
+
+                                    <td class="align-middle text-center text-sm">
+                                        <input type="number" class="form-control" value={{c.cloture}} name="compte2" aria-label="Name" aria-describedby="email-addon">
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <input type="number" class="form-control" value={{c.prevision}} name="compte3" aria-label="Name" aria-describedby="email-addon">
+                                    </td>
+
+
+                                    <!-- Verifier -->
+                                    <td class="align-middle text-center text-sm">
+                                        <button type="button" data-toggle="modal" data-target="#{{c.id}}" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                                    </td>
+
+
+                                    <!-- Non Verifier -->
+                                    <td class="align-middle text-center text-sm">
+                                        <button class="btn bg-gradient-danger" type="submit" name="id" value="{{c.id}}"><i class="fas fa-check-square"></i>  Validé</button>
+                                    </td>
+                                </form>
+
+
+                                {% else %}
+
+                                <form action="{% url 'islam' %}" method="POST">
+                                    {% csrf_token %}
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.proposition}}" name="compte" aria-label="Name" aria-describedby="email-addon"></th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_2}}</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_1}}</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">2021</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.controle_budgetaire}}--{{c.mois_controle}}</th>
+
+
+
+
+
+
+
+                                    <td class="align-middle text-center text-sm">
+                                        {{c.cloture}}
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        {{c.prevision}}
+                                    </td>
+
+
+                                    <!-- Verifier -->
+                                    <td class="align-middle text-center text-sm">
+                                        <button type="button" data-toggle="modal" data-target="#{{c.id}}" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <button class="btn bg-gradient-success" type="submit" name="id" value="{{c.id}}"><i class="fas fa-edit"></i>  Modifié</button>
+                                    </td>
+                                </form>
+
+                                {% endif %}
+
+
+
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="{{c.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                                            </div>
+                                            <div class="modal-body">
+                                                <h6 style="margin-right:220px;">Validé au niveau de Cadre {% if c.cadre == None %}
+                                                    <i class="fas fa-hourglass"></i> {% else %}
+                                                    <i class="fas fa-check-circle"></i> {% endif %}
+
+
+                                                </h6>
+                                                <p style="margin-right:350px;">Par : {{c.cadre.nom_user}} {{c.cadre.prenom_user}}</p>
+                                                <p style="margin-right:350px;">le : {{c.date1}}</p>
+
+                                                <h6 style="margin-right:100px;">Validé au niveau de Chef de département {% if c.cdd == None %}
+                                                    <i class="fas fa-hourglass"></i> {% else %}
+                                                    <i class="fas fa-check-circle"></i> {% endif %}
+                                                </h6>
+                                                <p style="margin-right:350px;">Par : {{c.cdd.nom_user}} {{c.cdd.prenom_user}}</p>
+                                                <p style="margin-right:350px;">le : {{c.date2}}</p>
+
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tr>
+                            {% else %}
+
+
+
+
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.proposition}}" name="compte" aria-label="Name" aria-describedby="email-addon"></th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_2}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_1}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">2021</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.controle_budgetaire}}--{{c.mois_controle}}</th>
+
+
+
+
+
+
+
+                            <td class="align-middle text-center text-sm">
+                                {{c.cloture}}
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                {{c.prevision}}
+                            </td>
+
+
+                            <!-- Verifier -->
+                            <td class="align-middle text-center text-sm">
+                                <button type="button" data-toggle="modal" data-target="#{{c.id}}" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                            </td>
+
+
+
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="{{c.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6 style="margin-right:220px;">Validé au niveau de Cadre {% if c.cadre == None %}
+                                                <i class="fas fa-hourglass"></i> {% else %}
+                                                <i class="fas fa-check-circle"></i> {% endif %}
+
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{c.cadre.nom_user}} {{c.cadre.prenom_user}}</p>
+                                            <p style="margin-right:350px;">le : {{c.date1}}</p>
+
+                                            <h6 style="margin-right:100px;">Validé au niveau de Chef de département {% if c.cdd == None %}
+                                                <i class="fas fa-hourglass"></i> {% else %}
+                                                <i class="fas fa-check-circle"></i> {% endif %}
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{c.cdd.nom_user}} {{c.cdd.prenom_user}}</p>
+                                            <p style="margin-right:350px;">le : {{c.date2}}</p>
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </tr>
+
+                            {% endif %} {% endif %} {% if profile.type_user == "cdd" %} {% if c.cdd1 == False and c.sd1 == False or c.cdd1 == True and c.sd1 == False %} {% if c.is_valide == False %}
+
+                            <form method="post" action="{% url 'verifier_trafic' %}">
+                                {% csrf_token %}
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.proposition}}" name="compte" aria-label="Name" aria-describedby="email-addon"></th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_2}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_1}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">2021</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.controle_budgetaire}}--{{c.mois_controle}}</th>
+
+
+
+
+
+
+                                <td class="align-middle text-center text-sm">
+                                    <input type="number" class="form-control" value={{c.cloture}} name="compte2" aria-label="Name" aria-describedby="email-addon">
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <input type="number" class="form-control" value={{c.prevision}} name="compte3" aria-label="Name" aria-describedby="email-addon">
+                                </td>
+
+
+                                <!-- Verifier -->
+                                <td class="align-middle text-center text-sm">
+                                    <button type="button" data-toggle="modal" data-target="#{{c.id}}" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                                </td>
+
+
+                                <!-- Non Verifier -->
+                                <td class="align-middle text-center text-sm">
+                                    <button class="btn bg-gradient-danger" type="submit" name="id" value="{{c.id}}"><i class="fas fa-check-square"></i>  Validé</button>
+                                </td>
+                            </form>
+
+
+                            {% else %}
+
+                            <form action="{% url 'islam' %}" method="POST">
+                                {% csrf_token %}
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.proposition}}" name="compte" aria-label="Name" aria-describedby="email-addon"></th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_2}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_1}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">2021</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.controle_budgetaire}}--{{c.mois_controle}}</th>
+
+
+
+
+
+
+
+                                <td class="align-middle text-center text-sm">
+                                    {{c.cloture}}
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    {{c.prevision}}
+                                </td>
+
+
+                                <!-- Verifier -->
+                                <td class="align-middle text-center text-sm">
+                                    <button type="button" data-toggle="modal" data-target="#{{c.id}}" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <button class="btn bg-gradient-success" type="submit" name="id" value="{{c.id}}"><i class="fas fa-edit"></i>  Modifié</button>
+                                </td>
+                            </form>
+
+                            {% endif %}
+
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="{{c.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6 style="margin-right:220px;">Validé au niveau de Cadre {% if c.cadre == None %}
+                                                <i class="fas fa-hourglass"></i> {% else %}
+                                                <i class="fas fa-check-circle"></i> {% endif %}
+
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{c.cadre.nom_user}} {{c.cadre.prenom_user}}</p>
+                                            <p style="margin-right:350px;">le : {{c.date1}}</p>
+
+                                            <h6 style="margin-right:100px;">Validé au niveau de Chef de département {% if c.cdd == None %}
+                                                <i class="fas fa-hourglass"></i> {% else %}
+                                                <i class="fas fa-check-circle"></i> {% endif %}
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{c.cdd.nom_user}} {{c.cdd.prenom_user}}</p>
+                                            <p style="margin-right:350px;">le : {{c.date2}}</p>
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </tr>
+                            {% else %}
+
+
+
+
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.proposition}}" name="compte" aria-label="Name" aria-describedby="email-addon"></th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_2}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_1}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">2021</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.controle_budgetaire}}--{{c.mois_controle}}</th>
+
+
+
+
+
+
+
+                            <td class="align-middle text-center text-sm">
+                                {{c.cloture}}
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                {{c.prevision}}
+                            </td>
+
+
+                            <!-- Verifier -->
+                            <td class="align-middle text-center text-sm">
+                                <button type="button" data-toggle="modal" data-target="#{{c.id}}" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                            </td>
+
+
+
+
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="{{c.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6 style="margin-right:220px;">Validé au niveau de Cadre {% if c.cadre == None %}
+                                                <i class="fas fa-hourglass"></i> {% else %}
+                                                <i class="fas fa-check-circle"></i> {% endif %}
+
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{c.cadre.nom_user}} {{c.cadre.prenom_user}}</p>
+                                            <p style="margin-right:350px;">le : {{c.date1}}</p>
+
+                                            <h6 style="margin-right:100px;">Validé au niveau de Chef de département {% if c.cdd == None %}
+                                                <i class="fas fa-hourglass"></i> {% else %}
+                                                <i class="fas fa-check-circle"></i> {% endif %}
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{c.cdd.nom_user}} {{c.cdd.prenom_user}}</p>
+                                            <p style="margin-right:350px;">le : {{c.date2}}</p>
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </tr>
+
+                            {% endif %} {% endif %} {% if profile.type_user == "sd" %}
+
+
+
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.proposition}}" name="compte" aria-label="Name" aria-describedby="email-addon"></th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_2}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.realisation_1}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">2021</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{c.controle_budgetaire}}--{{c.mois_controle}}</th>
+
+
+
+
+
+
+
+                            <td class="align-middle text-center text-sm">
+                                {{c.cloture}}
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                {{c.prevision}}
+                            </td>
+
+
+                            <!-- Verifier -->
+                            <td class="align-middle text-center text-sm">
+                                <button type="button" data-toggle="modal" data-target="#{{c.id}}" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                            </td>
+
+
+
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="{{c.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6 style="margin-right:220px;">Validé au niveau de Cadre {% if c.cadre == None %}
+                                                <i class="fas fa-hourglass"></i> {% else %}
+                                                <i class="fas fa-check-circle"></i> {% endif %}
+
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{c.cadre.nom_user}} {{c.cadre.prenom_user}}</p>
+                                            <p style="margin-right:350px;">le : {{c.date1}}</p>
+
+                                            <h6 style="margin-right:100px;">Validé au niveau de Chef de département {% if c.cdd == None %}
+                                                <i class="fas fa-hourglass"></i> {% else %}
+                                                <i class="fas fa-check-circle"></i> {% endif %}
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{c.cdd.nom_user}} {{c.cdd.prenom_user}}</p>
+                                            <p style="margin-right:350px;">le : {{c.date2}}</p>
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </tr>
+
+
+
+                            {% endif %} {% endfor %}
+
+
+                        </tbody>
+
+                    </table>
+
+
+
+
+
+                    <tr>
+
+
+
+
+
+                        </tbody>
+                        </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Bouton d'ajout -->
+
+<div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+        <i class="fas fa-download"></i>
+
+    </a>
+    <div class="card shadow-lg">
+        <div class="card-header pb-0 pt-3">
+
+            <div class="float-end mt-4">
+                <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                      <i class="fa fa-close"></i>
+                    </button>
+            </div>
+            <!-- End Toggle Button -->
+        </div>
+        <hr class="horizontal dark my-1">
+        <div class="card-body pt-sm-3 pt-0">
+            <!-- Sidebar Backgrounds -->
+            <div>
+                <h6 class="mb-0">Exporter Comme :</h6>
+            </div>
+            <br>
+
+            <!-- Sidenav Type -->
+
+            <div class="d-flex">
+                <button class="btn bg-gradient-danger w-100 px-3 mb-2 active" data-class="bg-transparent" onclick="sidebarType(this)">PDF &nbsp; <i class="fas fa-file-pdf"></i>
+
+                </button>
+               
+            </div>
+            <div class="d-flex">
+
+            <button class="btn bg-gradient-success w-100 px-3 mb-2 active" data-class="bg-white" onclick="sidebarType(this)">XLS &nbsp; <i class="far fa-file-excel"></i>
+
+            </button>
+        </div>
+
+
+            <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+            <!-- Navbar Fixed -->
+
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+<script>
+    function modal(c) {
+        Swal.fire({
+
+            title: 'Etat de validation',
+            html: '<h6 style="margin-right:220px;">Validé au niveau de Cadre  c  <i class="fas fa-check-circle"></i><i class="fas fa-hourglass"></i></h6>' +
+                '<p style="margin-right:350px;">Par : </p>' +
+                '<h6 style="margin-right:100px;">Validé au niveau de Chef de département   <i class="fas fa-check-circle"></i><i class="fas fa-hourglass"></i></h6>' +
+                '<p style="margin-right:350px;">Par : </p>' +
+                '<h6 style="margin-right:150px;">Validé au niveau de Sous directeur   <i class="fas fa-check-circle"></i><i class="fas fa-hourglass"></i></h6>' +
+                '<p style="margin-right:350px;">Par : </p>',
+
+        })
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock body %}

@@ -1,0 +1,844 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+
+<div class="container-fluid py-4">
+
+
+    <div class="row">
+        <div class="col-8">
+            <div class="numbers">
+
+                <a class="btn bg-gradient-dark w-10" onclick="goBack()"><i class="fas fa-arrow-left"></i></a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--          TABLES AFFICHAGE              -->
+
+{% if trafic == True %}
+
+
+<!-- PROPOSITION TRAFIC -->
+<div class="row my-4">
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="row">
+                    <div class="col-lg-6 col-7">
+                        <h3>REALISATION TRAFIC</h3>
+
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Unité : </span> {{unite}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Code monnaie : </span> {{unite.lib_monnaie}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Réglé par : </span> Unité
+                        </p><br>
+                        <td class="align-middle text-center text-sm">
+                            <button type="button" data-toggle="modal" data-target="#modal1" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                        </td>
+                    </div>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+                    <table class="table align-items-center mb-0" id="tableau_pv">
+                        <tbody>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SCF</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RUBRIQUES</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">REALISATION</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">COMMENTAIRE</th>
+
+                            </tr>
+                            {% for p in pro %}
+
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.scf}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.rubrique}}</th>
+
+
+                                <td class="align-middle text-center text-sm">
+                                    {{p.realisation}}
+                                </td>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.commentaire}}</th>
+
+                            </tr>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6 style="margin-right:220px;">Ajouté <i class="fas fa-check-circle"></i>
+
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{usert_min}}</p>
+                                            <h6 style="margin-right:100px;">Date d'ajout
+                                                <i class="fas fa-calendar-alt"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Le : {{dusert_min}}</p>
+
+
+                                            {% if dusert_min != dusert_max %}
+                                            <h6 style="margin-right:150px;">Modifié
+                                                <i class="fas fa-edit"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{usert_max}} </p>
+                                            <h6 style="margin-right:100px;">Date de modification
+                                                <i class="fas fa-calendar-alt"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Le :{{dusert_max}} </p>
+                                            {% endif %}
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            {% endfor %}
+
+                            <!-- Verifier -->
+
+
+                        </tbody>
+
+                    </table>
+
+
+
+
+
+                    <tr>
+
+
+
+
+
+                        </tbody>
+                        </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
+{% endif %} {% if recette == True %}
+<!-- PROPOSITION RECETTE -->
+<div class="row my-4">
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="row">
+                    <div class="col-lg-6 col-7">
+                        <h3>REALISATION RECETTE</h3>
+
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Unité : </span> {{unite}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Code monnaie : </span> {{unite.lib_monnaie}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Réglé par : </span> Unité
+                        </p>
+                        <br>
+                        <td class="align-middle text-center text-sm">
+                            <button type="button" data-toggle="modal" data-target="#modal2" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                        </td>
+                    </div>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+                    <table class="table align-items-center mb-0" id="tableau_pv">
+                        <tbody>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SCF</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RUBRIQUES</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">REALISATION</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">COMMENTAIRE</th>
+
+                            </tr>
+                            {% for p in pro1 %}
+
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.scf}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.rubrique}}</th>
+
+
+                                <td class="align-middle text-center text-sm">
+                                    {{p.realisation}}
+                                </td>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.commentaire}}</th>
+
+                            </tr>
+
+                </div>
+
+
+                {% endfor %}
+                <!-- Modal -->
+                <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                            </div>
+                            <div class="modal-body">
+                                <h6 style="margin-right:220px;">Ajouté <i class="fas fa-check-circle"></i>
+
+
+                                </h6>
+                                <p style="margin-right:350px;">Par : {{userr_min}}</p>
+                                <h6 style="margin-right:100px;">Date d'ajout
+                                    <i class="fas fa-calendar-alt"></i>
+
+                                </h6>
+                                <p style="margin-right:350px;">Le : {{duserr_min}}</p>
+                                {% if duserr_min != duserr_max %}
+                                <h6 style="margin-right:150px;">Modifié
+                                    <i class="fas fa-edit"></i>
+
+                                </h6>
+                                <p style="margin-right:350px;">Par : {{userr_max}} </p>
+                                <h6 style="margin-right:100px;">Date de modification
+                                    <i class="fas fa-calendar-alt"></i>
+
+                                </h6>
+                                <p style="margin-right:350px;">Le :{{duserr_max}} </p>
+                                {% endif %}
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                </tbody>
+
+
+
+                </table>
+
+
+
+
+
+                <tr>
+
+
+
+
+
+                    </tbody>
+                    </table>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+</div>
+{% endif %} {% if emission == True %}
+<!-- PROPOSITION EMISSION -->
+<div class="row my-4">
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="row">
+                    <div class="col-lg-6 col-7">
+                        <h3>REALISATION C.A L'EMISSION</h3>
+
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Unité : </span> {{unite}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Code monnaie : </span> {{unite.lib_monnaie}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Réglé par : </span> Unité
+                        </p>
+                        <br>
+                        <td class="align-middle text-center text-sm">
+                            <button type="button" data-toggle="modal" data-target="#modal3" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                        </td>
+                    </div>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+                    <table class="table align-items-center mb-0" id="tableau_pv">
+                        <tbody>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SCF</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RUBRIQUES</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">REALISATION</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">COMMENTAIRE</th>
+
+                            </tr>
+                            {% for p in pro2 %}
+
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.scf}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.rubrique}}</th>
+
+
+                                <td class="align-middle text-center text-sm">
+                                    {{p.realisation}}
+                                </td>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.commentaire}}</th>
+
+                            </tr>
+
+                            {% endfor %}
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6 style="margin-right:220px;">Ajouté <i class="fas fa-check-circle"></i>
+
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{usere_min}}</p>
+                                            <h6 style="margin-right:100px;">Date d'ajout
+                                                <i class="fas fa-calendar-alt"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Le : {{dusere_min}}</p>
+                                            {% if dusere_min != dusere_max %}
+                                            <h6 style="margin-right:150px;">Modifié
+                                                <i class="fas fa-edit"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{usere_max}} </p>
+                                            <h6 style="margin-right:100px;">Date de modification
+                                                <i class="fas fa-calendar-alt"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Le :{{dusere_max}} </p>
+                                            {% endif %}
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </tbody>
+
+                    </table>
+
+
+
+
+
+                    <tr>
+
+
+
+
+
+                        </tbody>
+                        </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endif %} {% if fonct == True %}
+<!-- PROPOSITION DEPENSES -->
+
+
+<div class="row my-4">
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="row">
+                    <div class="col-lg-6 col-7">
+                        <h3>REALISATION FONCTIONEMENT</h3>
+
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Unité : </span> {{unite}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Code monnaie : </span> {{unite.lib_monnaie}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Réglé par : </span> Unité
+                        </p>
+                        <br>
+                        <td class="align-middle text-center text-sm">
+                            <button type="button" data-toggle="modal" data-target="#modal4" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                        </td>
+                    </div>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+                    <table class="table align-items-center mb-0" id="tableau_pv">
+                        <tbody>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> N° SCF</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RUBRIQUES</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TYPE</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RÉGLÉ PAR</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MONNAIE</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">REALISATION</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">COMMENTAIRE</th>
+
+                            </tr>
+
+                            {% for p in pro3 %}
+
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.scf}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.rubrique}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.type1}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.regler_par}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.monnie}}</th>
+
+                                <td class="align-middle text-center text-sm">
+                                    {{p.realisation}}
+                                </td>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.commentaire}}</th>
+
+                            </tr>
+
+                            {% endfor %}
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6 style="margin-right:220px;">Ajouté <i class="fas fa-check-circle"></i>
+
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{userf_min}}</p>
+                                            <h6 style="margin-right:100px;">Date d'ajout
+                                                <i class="fas fa-calendar-alt"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Le : {{duserf_min}}</p>
+                                            {% if duserf_min != duserf_max %}
+                                            <h6 style="margin-right:150px;">Modifié
+                                                <i class="fas fa-edit"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Par : {{userf_max}} </p>
+                                            <h6 style="margin-right:100px;">Date de modification
+                                                <i class="fas fa-calendar-alt"></i>
+
+                                            </h6>
+                                            <p style="margin-right:350px;">Le :{{duserf_max}} </p>
+                                            {% endif %}
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+
+
+
+                    <tr>
+
+
+
+
+
+                        </tbody>
+                        </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endif %} {% if expl == True %}
+<div class="row my-4">
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="row">
+                    <div class="col-lg-6 col-7">
+                        <h3>REALISATION EXPLOITATION</h3>
+
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Unité : </span> {{unite}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Code monnaie : </span> {{unite.lib_monnaie}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Réglé par : </span> Unité
+                        </p>
+                        <br>
+                        <td class="align-middle text-center text-sm">
+                            <button type="button" data-toggle="modal" data-target="#modal5" class="btn bg-gradient-secondary"><i class="fas fa-exclamation-circle"></i> Etat</button>
+                        </td>
+                    </div>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+                    <table class="table align-items-center mb-0" id="tableau_pv">
+                        <tbody>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> N° SCF</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RUBRIQUES</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TYPE</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RÉGLÉ PAR</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">MONNAIE</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">REALISATION</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">COMMENTAIRE</th>
+
+                            </tr>
+
+                            {% for p in pro4 %}
+
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.scf}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.rubrique}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.type1}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.regler_par}}</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.monnie}}</th>
+
+                                <td class="align-middle text-center text-sm">
+                                    {{p.realisation}}
+                                </td>
+
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{p.commentaire}}</th>
+
+                            </tr>
+                </div>
+
+
+
+                {% endfor %}
+                <!-- Modal -->
+                <div class="modal fade" id="modal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+                            </div>
+                            <div class="modal-body">
+                                <h6 style="margin-right:220px;">Ajouté <i class="fas fa-check-circle"></i>
+
+
+                                </h6>
+                                <p style="margin-right:350px;">Par : {{userx_min}}</p>
+                                <h6 style="margin-right:100px;">Date d'ajout
+                                    <i class="fas fa-calendar-alt"></i>
+
+                                </h6>
+                                <p style="margin-right:350px;">Le : {{duserx_min}}</p>
+                                {% if duserx_min != duserx_max %}
+                                <h6 style="margin-right:150px;">Modifié
+                                    <i class="fas fa-edit"></i>
+
+                                </h6>
+                                <p style="margin-right:350px;">Par : {{userx_max}} </p>
+                                <h6 style="margin-right:100px;">Date de modification
+                                    <i class="fas fa-calendar-alt"></i>
+
+                                </h6>
+                                <p style="margin-right:350px;">Le :{{duserx_max}} </p>
+                                {% endif %}
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </tbody>
+
+
+                </table>
+
+
+
+
+
+                <tr>
+
+
+
+
+
+                    </tbody>
+                    </table>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+</div>
+
+{% endif %}
+
+
+<!--Bouton d'ajout -->
+
+<div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+        <i class="fas fa-plus py-2"></i>
+    </a>
+    <div class="card shadow-lg">
+        <div class="card-header pb-0 pt-3">
+
+            <div class="float-end mt-4">
+                <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                      <i class="fa fa-close"></i>
+                    </button>
+            </div>
+            <!-- End Toggle Button -->
+        </div>
+        <hr class="horizontal dark my-1">
+        <div class="card-body pt-sm-3 pt-0">
+            <!-- Sidebar Backgrounds -->
+            <div>
+                <h6 class="mb-0">Sidebar Colors</h6>
+            </div>
+
+            <!-- Sidenav Type -->
+
+            <div class="d-flex">
+                <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+                <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+            </div>
+            <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+            <!-- Navbar Fixed -->
+
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="modal fade" id="{{c.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Etat de validation</h5>
+
+            </div>
+            <div class="modal-body">
+                <h6 style="margin-right:220px;">Validé au niveau de Cadre {% if c.cadre == None %}
+                    <i class="fas fa-hourglass"></i> {% else %}
+                    <i class="fas fa-check-circle"></i> {% endif %}
+
+
+                </h6>
+                <p style="margin-right:350px;">Par : {{c.cadre.nom_user}} {{c.cadre.prenom_user}}</p>
+                <h6 style="margin-right:100px;">Validé au niveau de Chef de département {% if c.cdd == None %}
+                    <i class="fas fa-hourglass"></i> {% else %}
+                    <i class="fas fa-check-circle"></i> {% endif %}
+                </h6>
+                <p style="margin-right:350px;">Par : </p>
+                <h6 style="margin-right:150px;">Validé au niveau de Sous directeur {% if c.sd == None %}
+                    <i class="fas fa-hourglass"></i> {% else %}
+                    <i class="fas fa-check-circle"></i> {% endif %}
+                </h6>
+                <p style="margin-right:350px;">Par : </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock body %}

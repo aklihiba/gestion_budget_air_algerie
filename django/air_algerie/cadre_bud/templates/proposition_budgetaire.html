@@ -1,0 +1,216 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="numbers">
+
+        <a class="btn bg-gradient-dark w-10" href="..\pre_pre_proposition_budgetaire"><i class="fas fa-arrow-left"></i></a>
+
+    </div>
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">PROPOSITION DE BUDGET</h6>
+        </div>
+
+
+
+        <div class="card-body pt-4 p-3">
+            <ul class="list-group">
+
+                {% if unite.Trafic_Indicateur == "Y" %}
+                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                        <h6 class="mb-3 text-sm">Trafic</h6>
+                    </div>
+
+                    {% if trafic == False %}
+                    <div class="ms-auto">
+                        <a class="btn bg-gradient-dark w-100" href="..\proposition_trafic"> <i class="fas fa-pen-square"></i> Remplir</a>
+                    </div>
+                    {% else %}
+                    <div class="ms-auto">
+
+                        <a class="btn bg-gradient-success w-100"  data-toggle="modal" data-target="#exampleModalCenter1"> Déja traité <i class="far fa-check-circle"></i></a>
+                    </div>
+                    <!-- modal-->
+                    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                      
+                            <div class="modal-body">
+                            Proposition budgétaire "TRAFIC" est déja traité voulez-vous le modifier ?
+                            </div>
+                            <div class="modal-footer">
+                              <a  type="button" class="btn btn-secondary" data-dismiss="modal">Non</a>
+                              <a href="..\edit_trafic_proposition" type="button" class="btn bg-gradient-danger">Modifier</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    {% endif %}
+
+
+                </li>
+                {% endif %}
+
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                        <h6 class="mb-3 text-sm">Recette</h6>
+                    </div>
+
+                    {% if recette == False %}
+                    <div class="ms-auto">
+                        <a class="btn bg-gradient-dark w-100" href="..\proposition_recette"> <i class="fas fa-pen-square"></i> Remplir</a>
+                    </div>
+                    {% else %}
+                    <div class="ms-auto">
+
+                        <a class="btn bg-gradient-success w-100" data-toggle="modal" data-target="#exampleModalCenter2"> Déja traité <i class="far fa-check-circle"></i></a>
+                    </div>
+
+                                        <!-- modal-->
+                                        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                              <div class="modal-content">
+                                          
+                                                <div class="modal-body">
+                                                Proposition budgétaire "RECETTE" est déja traité voulez-vous le modifier ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <a  type="button" class="btn btn-secondary" data-dismiss="modal">Non</a>
+                                                  <a href="..\edit_recette_proposition" type="button" class="btn bg-gradient-danger">Modifier</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                    {% endif %}
+
+
+                </li>
+
+                {% if unite.Emission_Indicateur == "Y" %}
+
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                        <h6 class="mb-3 text-sm">Chiffre d'affaire à l'emission</h6>
+                    </div>
+
+                    {% if emission == False %}
+                    <div class="ms-auto">
+                        <a class="btn bg-gradient-dark w-100" href="..\proposition_emission"> <i class="fas fa-pen-square"></i> Remplir</a>
+                    </div>
+                    {% else %}
+                    <div class="ms-auto">
+
+                        <a class="btn bg-gradient-success w-100" data-toggle="modal" data-target="#exampleModalCenter3"> Déja traité <i class="far fa-check-circle"></i></a>
+                    </div>
+                                        <!-- modal-->
+                                        <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                              <div class="modal-content">
+                                          
+                                                <div class="modal-body">
+                                                Proposition budgétaire "C.A EMISSION" est déja traité voulez-vous le modifier ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <a  type="button" class="btn btn-secondary" data-dismiss="modal">Non</a>
+                                                  <a href="..\edit_emission_proposition" type="button" class="btn bg-gradient-danger">Modifier</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                    {% endif %}
+
+
+                </li>
+                {% endif %}
+
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                    <div class="d-flex flex-column">
+                        <h6 class="mb-3 text-sm">Les dépenses</h6>
+                    </div>
+
+
+                    {% if depense == False %}
+                    <div class="ms-auto">
+                        <a class="btn bg-gradient-dark w-100" href="..\proposition_depense"> <i class="fas fa-pen-square"></i> Remplir</a>
+                    </div>
+                    {% else %}
+                    <div class="ms-auto">
+
+                        <a class="btn bg-gradient-success w-100" data-toggle="modal" data-target="#exampleModalCenter4"> Déja traité <i class="far fa-check-circle"></i></a>
+                    </div>
+                                        <!-- modal-->
+                                        <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                              <div class="modal-content">
+                                          
+                                                <div class="modal-body">
+                                                Proposition budgétaire "DEPENSES" est déja traité voulez-vous le modifier ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <a  type="button" class="btn btn-secondary" data-dismiss="modal">Non</a>
+                                                  <a href="..\proposition_depense" type="button" class="btn bg-gradient-danger">Modifier</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+
+                    {% endif %}
+
+
+
+
+                </li>
+
+
+
+
+
+
+
+                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+                  <div class="d-flex flex-column">
+                      <h6 class="mb-3 text-sm">Les offres</h6>
+                  </div>
+
+
+                  {% if depense == False %}
+                  <div class="ms-auto">
+                      <a class="btn bg-gradient-dark w-100" href="..\proposition_depense"> <i class="fas fa-pen-square"></i> Remplir</a>
+                  </div>
+                  {% else %}
+                  <div class="ms-auto">
+
+                      <a class="btn bg-gradient-success w-100" data-toggle="modal" data-target="#exampleModalCenter4"> Déja traité <i class="far fa-check-circle"></i></a>
+                  </div>
+                                      <!-- modal-->
+                                      <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                          <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                        
+                                              <div class="modal-body">
+                                              Proposition budgétaire "DEPENSES" est déja traité voulez-vous le modifier ?
+                                              </div>
+                                              <div class="modal-footer">
+                                                <a  type="button" class="btn btn-secondary" data-dismiss="modal">Non</a>
+                                                <a href="..\proposition_depense" type="button" class="btn bg-gradient-danger">Modifier</a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                  {% endif %}
+
+
+
+
+              </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

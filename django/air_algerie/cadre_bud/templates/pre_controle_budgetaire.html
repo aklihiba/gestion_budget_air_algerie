@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block user %}
+  {{user}}
+{% endblock user %}
+  
+
+{% block poste %}
+  {{poste}}
+{% endblock poste %}
+  
+
+{% block body %}
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+  <div class="numbers">
+                      
+    <a class="btn bg-gradient-dark w-10" href="..\pre_pre_controle_budgetaire"><i class="fas fa-arrow-left"></i></a>
+
+  </div>
+  <div class="card">
+    <div class="card-header text-center pt-4">
+      <h6 class="mb-0">CONTROLE BUDGETAIRE</h6>
+    </div>
+    <div class="card-body pt-4 p-3">
+       <form action="{% url 'add_control' %}" method="POST">
+         {% csrf_token %}
+      <ul class="list-group">
+        <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
+          <div class="align-middle text-center text-sm">
+            <td class="align-middle text-center text-sm">
+                {{form.annee}}
+              </td>
+          </div>
+          <div class="ms-auto">
+            <button class="btn bg-gradient-secondary w-100" type="submit"> <i class="fas fa-pen-square"></i> Consulter</button>
+          </div>
+         
+        </li>
+
+      </ul>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
+  

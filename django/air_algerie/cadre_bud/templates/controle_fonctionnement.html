@@ -1,0 +1,225 @@
+{% extends 'base.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+
+<div class="container-fluid py-4">
+
+
+    <div class="row">
+        <div class="col-8">
+            <div class="numbers">
+
+                <a class="btn bg-gradient-dark w-10" href="../controle_budgetaire"><i class="fas fa-arrow-left"></i></a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!--          TABLES AFFICHAGE              -->
+
+
+
+<div class="row my-4">
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="row">
+                    <div class="col-lg-6 col-7">
+                        <h3>CONTROLE BUDGETAIRE FONCTIONNEMENT</h3>
+
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Unité : </span> {{unite}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Code monnaie : </span> {{unite.lib_monnaie}}
+                        </p>
+                        <p class="text-sm mb-0">
+                            <span class="font-weight-bold ">Réglé par : </span> Unité
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="card-body px-0 pb-2">
+                <div class="table-responsive">
+
+                    <table class="table align-items-center mb-0" id="tableau_pv">
+                        <tbody>
+                            <tr>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SCF</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">RUBRIQUES</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TYPE</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mois</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Montant</th>
+
+
+                            </tr>
+                            <form method="POST" action="{% url 'add_controle_depense'%}">
+                                {% csrf_token %} {% for c in compte %}
+
+                                <tr>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.pos6.scf}}" name="scf" aria-label="Name" aria-describedby="email-addon"></th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.pos6.lib}}" name="compte" aria-label="Name" aria-describedby="email-addon"></th>
+
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="text" class="form-control" value="{{c.type}}" name="type" aria-label="Name" aria-describedby="email-addon"></th>
+
+                                    <td class="align-middle text-center text-sm">
+                                        <input type="text" class="form-control" value="{{mois}}" name="mois">
+                                    </td>
+
+                                    <td class="align-middle text-center text-sm">
+                                        <input type="number" class="form-control" name="montant" aria-label="Name" aria-describedby="email-addon">
+                                    </td>
+
+
+
+
+
+
+
+
+                                </tr>
+
+
+                                {% endfor %}
+
+                                <tr>
+                                    <td>
+                                        <button class="btn bg-gradient-dark w-90 mb-0" type="submit">Envoyer</button>
+                                    </td>
+
+                                </tr>
+
+                            </form>
+
+                        </tbody>
+
+                    </table>
+
+
+
+
+
+                    <tr>
+
+
+
+
+
+                        </tbody>
+                        </table>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Bouton d'ajout -->
+
+<div class="fixed-plugin">
+    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
+        <i class="fas fa-plus py-2"></i>
+    </a>
+    <div class="card shadow-lg">
+        <div class="card-header pb-0 pt-3">
+
+            <div class="float-end mt-4">
+                <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
+                      <i class="fa fa-close"></i>
+                    </button>
+            </div>
+            <!-- End Toggle Button -->
+        </div>
+        <hr class="horizontal dark my-1">
+        <div class="card-body pt-sm-3 pt-0">
+            <!-- Sidebar Backgrounds -->
+            <div>
+                <h6 class="mb-0">Sidebar Colors</h6>
+            </div>
+
+            <!-- Sidenav Type -->
+
+            <div class="d-flex">
+                <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
+                <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
+            </div>
+            <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
+            <!-- Navbar Fixed -->
+
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--                                          
+      <script>
+        var button=document.getElementById('addrow')
+        button.addEventListener('click',function(event){
+          event.preventDefault()
+          Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+        })
+     
+      </script>
+  -->
+
+
+
+{% endblock body %}

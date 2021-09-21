@@ -1,0 +1,105 @@
+{% extends 'base_admin.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">Unités</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-secondary opacity-7"></th>
+                            <th class="text-secondary opacity-7"></th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+
+                            <td class="align-middle">
+                                <a href="{% url 'add_unite' %}" class="btn bg-gradient-dark w-50 mb-0" name="id" value="">
+                                  Ajouter une unité  &nbsp; <i class="fas fa-plus-square"></i> </a>
+                            </td>
+
+
+
+
+                        </tr>
+
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+            <div class="table-responsive">
+
+                <table class="table align-items-center mb-0" id="tableau_pv">
+                    <tbody>
+                        <tr>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code unité</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Réseau d'unité</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+
+                        </tr>
+                        {% for u in unite %}
+
+                        <tr>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{u.code_unite}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{u.reseau}}</th>
+
+                            <form action="{% url 'interu_edit' %}" method="POST">
+                                {% csrf_token %}
+                                <td class="align-middle text-center text-sm">
+                                    <button class="btn bg-gradient-danger" type="submit " name="id" value="{{u.id}} ">  Modifier &nbsp;<i class="fas fa-pen-square"></i></button>
+                                </td>
+                            </form>
+
+                        </tr>
+
+                        <tr>
+
+                            {% endfor %}
+
+
+                        </tr>
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+                <tr>
+
+
+
+
+
+                    </tbody>
+                    </table>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock body %}

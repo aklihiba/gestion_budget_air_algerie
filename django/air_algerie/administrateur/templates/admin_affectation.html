@@ -1,0 +1,82 @@
+{% extends 'base_admin.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">Affectation</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-secondary opacity-7"></th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+
+                            <td class="align-middle">
+                                <a href="{% url 'add_unite_user' %}" class="btn bg-gradient-dark w-100 mb-0" name="id" value="">
+                                  Affecter une unité à un utilisateur  &nbsp; <i class="fas fa-plus-square"></i> </button>
+                            </td>
+
+
+
+                            <td class="align-middle">
+                                <form action="" method="POST">
+                                    <a href="{% url 'delete_unite_user' %}"class="btn bg-gradient-dark w-100 mb-0" name="id" value="">
+                                        Supprimer une unité pour un utilisateur &nbsp; <i class="fas fa-minus-square"></i> </a>
+                                </form>
+                            </td>
+
+
+
+
+
+
+                        </tr>
+
+                        <tr>
+
+                            <td class="align-middle">
+                                <form action="" method="POST">
+                                    <a href="{% url 'add_unite_pos' %}" class="btn bg-gradient-dark w-100 mb-0" name="id" value="">
+                                  Affecter un compte à une unité  &nbsp; <i class="fas fa-plus-square"></i> </a>
+                                </form>
+                            </td>
+
+
+
+                            <td class="align-middle">
+                                <a href="{% url 'delete_unite_pos' %}" class="btn bg-gradient-dark w-100 mb-0" name="id" value="">
+                                        Supprimer un compte à une unité &nbsp; <i class="fas fa-minus-square"></i> </a>
+                                </form>
+                            </td>
+
+
+
+
+
+
+                        </tr>
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock body %}
