@@ -202,7 +202,7 @@ def edit_emission_proposition(request):
     current_year=request.session['annee']
     u=unite_1.objects.get(id=request.session['unite'])
     pv=entete_pv.objects.get(unite=u,annee=current_year,type="proposition")
-    p=proposition.objects.filter(pv=pv,type='emission')
+    p=proposition.objects.filter(pv=pv, type='emission')
     context = {
         'pro': p,
         'unite':u
@@ -622,7 +622,6 @@ def proposition_fonctionnement1(request):
     print(u)
     com = unite_pos6.objects.filter(unite=u,type="FONCTIONNEMENT")
     print(com)
-    print("kakakakkakakakak")
     m = monnaie.objects.all()
 
     if p.type_user == "cadre_bud":
@@ -631,19 +630,45 @@ def proposition_fonctionnement1(request):
         poste = "Chef de département"   
     if p.type_user == "sd":
         poste = "Sous-directeur"
+#### hiba : add account form #####
+    form= form_unite_pos_fonctionnement
+    form1 = form_unite_pos_fonctionnement(request.POST)
+    if form1.is_valid():
+        u1 = unite_pos6()
+        u1.unite=u  
+        u1.pos6=Pos6.objects.get(scf=form1.cleaned_data["compte"].scf)  
+        print(Pos6.objects.get(scf=form1.cleaned_data["compte"].scf))
 
+        u1.type='FONCTIONNEMENT'   
+        u1.added_by=p.type_user       
+        u1.save()
+        com = unite_pos6.objects.filter(unite=u,type="FONCTIONNEMENT")
+        return redirect("proposition_fonctionnement1")
+    
 
     context = {
         "user": name,
         "poste": poste,
         "unite":u,  
         "compte":com,
-        'monnaie':m
+        'monnaie':m,
+        'form': form
        
         
      }   
 
     return render(request, "proposition_fonctionnement.html", context   )
+
+ ### hiba : delete unite_pos ####  
+def delete_unite_pos_fct(request):
+    if (not request.user.is_authenticated):
+        return render(request, '404.html')
+    
+    id = request.POST.get("id")
+    u = unite_pos6.objects.get(id=id)
+    u.delete()    
+    return redirect ('proposition_fonctionnement')
+
 
 ####1111
 def proposition_exploitation1(request):

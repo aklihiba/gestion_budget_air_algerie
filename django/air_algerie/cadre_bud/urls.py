@@ -245,7 +245,8 @@ urlpatterns = [
     path('add_depenses_m/',add_depenses_m,name="add_depenses_m"),
     path('modifier_depenses_m/',modifier_depenses_m,name="modifier_depenses_m"),
 
-    
+    #### hiba  #####
+    path('delete_unite_pos_fct/',delete_unite_pos_fct,name="delete_unite_pos_fct"),
 
 
 

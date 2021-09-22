@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.forms.fields import CharField, ChoiceField
 from django.forms.widgets import RadioSelect
+from .models import *
 
 
 class form_login(forms.Form):
@@ -73,12 +74,18 @@ class form_controle1(forms.Form):
             "aria-label":"Name"
         })
     )
-DEGRES = [('0','négligeable'),('1','utile'),('2','important')]
-class form_comment(forms.Form):
-    commentaire = forms.CharField(
-        widget=forms.TextInput(attrs={
-            'placeholder':'Commentaire',
+
+class form_unite_pos_fonctionnement(forms.Form):
+    r = Pos6.objects.all() 
+    for i in r:
+                if not (i.type == 'FONCTIONNEMENT'):
+                    r = r.exclude(id=i.id)
+
+    compte = forms.ModelChoiceField(queryset=r,widget=forms.Select(
+        attrs={
             'class':'form-control'
-        })
-    )
-    degré = ChoiceField(widget=RadioSelect, choices=DEGRES, required= True)
+        }
+    ))
+    
+
+   

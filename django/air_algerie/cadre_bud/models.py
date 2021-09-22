@@ -199,8 +199,9 @@ class unite_pos6(models.Model):
     unite = models.ForeignKey(unite_1,on_delete=models.CASCADE,default=None)
     pos6 =  models.ForeignKey(Pos6,on_delete=models.CASCADE,default=None)
     type = models.CharField(max_length=100,null=True,blank=True)
+    added_by = models.CharField(max_length=20, null=False, blank=False, default='admin')
     def __str__(self):
-          return'{} {}'.format(self.unite,self.pos6)
+          return'{} {} {}'.format(self.unite,self.pos6,self.added_by)
 
 class Pos7(models.Model):
     scf = models.IntegerField(blank=True,unique=True)    

@@ -171,43 +171,7 @@
 
 
 
-                <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
-                  <div class="d-flex flex-column">
-                      <h6 class="mb-3 text-sm">Les offres</h6>
-                  </div>
-
-
-                  {% if depense == False %}
-                  <div class="ms-auto">
-                      <a class="btn bg-gradient-dark w-100" href="..\proposition_depense"> <i class="fas fa-pen-square"></i> Remplir</a>
-                  </div>
-                  {% else %}
-                  <div class="ms-auto">
-
-                      <a class="btn bg-gradient-success w-100" data-toggle="modal" data-target="#exampleModalCenter4"> Déja traité <i class="far fa-check-circle"></i></a>
-                  </div>
-                                      <!-- modal-->
-                                      <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                          <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                        
-                                              <div class="modal-body">
-                                              Proposition budgétaire "DEPENSES" est déja traité voulez-vous le modifier ?
-                                              </div>
-                                              <div class="modal-footer">
-                                                <a  type="button" class="btn btn-secondary" data-dismiss="modal">Non</a>
-                                                <a href="..\proposition_depense" type="button" class="btn bg-gradient-danger">Modifier</a>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-
-                  {% endif %}
-
-
-
-
-              </li>
+               
             </ul>
         </div>
     </div>
