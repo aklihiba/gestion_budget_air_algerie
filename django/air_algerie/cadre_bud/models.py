@@ -358,9 +358,15 @@ class notifie_bud_m(models.Model):
     def __str__(self):
         return str(self.type)
 
+##### hiba : Notification ###########
+class notification(models.Model):
+    pv = models.ForeignKey(entete_pv,on_delete=models.CASCADE,default=None)
+    notified_user = models.ForeignKey(profile, on_delete=models.CASCADE,default=None)
+    modifier_user = models.ForeignKey(profile,related_name="cadre5",on_delete=models.CASCADE,default=None,null=True)
+    date = models.DateTimeField()
 
-
-
+    def __str__(self):
+        return '{} {} {}'.format(self.pv,self.notified_user,self.modifier_user)
 
 
 

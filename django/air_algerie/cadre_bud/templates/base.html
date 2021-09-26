@@ -27,6 +27,8 @@
     <!-- CSS Files -->
     <link id="pagestyle" href="{% static  'static_file/css/soft-ui-dashboard.css'%}" rel="stylesheet" />
 
+    
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -287,6 +289,34 @@
                     </ol>
                     <h6 class="font-weight-bolder mb-0"></h6>
                 </nav>
+                <div class="align-items-md-end">
+                    {% if not p.type_user == "cadre_bud" %}
+                <div class="nav-item dropdown notification-section text-md-right ">
+                    <a href="#" class="notification dropdown-toggle" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="true">
+                        {% if notifications|length == 0 %}
+                        <span><i class='fa fa-bell btn-outline-dark'></i></span>
+                        <span class="text-normal" id="notification-number">0</span>
+                        {% else %}
+                        <span><i class='fa fa-bell btn-outline-danger'></i></span>
+                        <span class="text-danger" id="notification-number">{{notifications|length}}</span>
+                        {% endif %}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="notifications-dropdown"
+                        data-popper-placement="bottom-end"
+                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(-70px, 42px, 0px);">
+                        
+                        {% for i in notifications %}
+                        <li class="dropdown-item">{{i}}</li>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                        {% comment %} <li class='dropdown-item'>Hello</li>
+                        <hr class="dropdown-divider"> {% endcomment %}
+                        
+                    </ul>
+                </div>
+                {% endif %}
+                </div>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                         <div class="input-group">

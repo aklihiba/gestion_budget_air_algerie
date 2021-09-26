@@ -1056,7 +1056,7 @@ def reunion_trafic(request):
     p = profile.objects.get(user=request.user)
     if ( p.type_user=="administrateur"):
         return render(request, '404.html')
-   
+    notifications = get_notifications(p)
     u = unite_1.objects.get(pk=request.session["unite"])
     name = str(p.nom_user) + '     ' + str(p.prenom_user)
     date_act = int(datetime.now().year)
@@ -1100,8 +1100,8 @@ def reunion_trafic(request):
                 "poste": poste,
                 "unite":u,
                 "compte":r2,
-                "profile":p
-                
+                "profile":p,
+                "notifications":notifications
                          }
             else: 
 
@@ -1119,7 +1119,8 @@ def reunion_trafic(request):
                     "poste": poste,
                     "unite":u,
                     "compte":r2,
-                    "profile":p
+                    "profile":p,
+                    "notifications":notifications
 
                     
                 }   
@@ -1136,7 +1137,8 @@ def reunion_trafic(request):
                 "poste":poste,
                 "unite":u,
                 "compte":r2,
-                "profile":p
+                "profile":p,
+                "notifications":notifications
 
                 
                          }
@@ -1154,7 +1156,8 @@ def reunion_trafic(request):
                     "poste": poste,
                     "unite":u,
                     "compte":r2,
-                    "profile":p
+                    "profile":p,
+                    "notifications":notifications
 
                     
                 }   
@@ -1170,7 +1173,8 @@ def reunion_trafic(request):
                     "poste": poste,
                     "compte":r,
                     "unite":u,
-                    "profile":p
+                    "profile":p,
+                    "notifications":notifications
 
                 }
             
@@ -1193,7 +1197,8 @@ def reunion_trafic(request):
                     "compte":r1,
                     "etat":1,
                     "unite":u,
-                    "profile":p
+                    "profile":p,
+                    "notifications":notifications
 
                     
                 }
@@ -1221,6 +1226,8 @@ def verifier_trafic(request):
     r.prevision = request.POST.get("compte3")
     r.is_valide = True
     r.save()
+    ## add notification 
+    create_notif(r.pv,p)
     #### hna notifie
     date_act = int(datetime.now().year)+1
     u = unite_1.objects.get(pk=request.session["unite"])
@@ -6500,3 +6507,24 @@ def reajustement_depenses_m(request):
 
 
     return render(request, "reajustement_depenses_m.html", context   )
+
+##### hiba: notification's fct ######
+def create_notif(pv, user):
+
+    up = unite_profile.objects.filter(unite= pv.unite)
+    if up.exists :
+        ## unite_pro = unite_profile.objects.get(unite=pv.unite)
+        for unpr in up :
+            pro = unpr.pro
+            if (pro.type_user=='sd' and not user.type_user=='sd'):
+                if not pv.type in {'controle','proposition'}:
+                    notif = notification(pv=pv, notified_user=pro, modifier_user=user , date=datetime.now())
+                    notif.save()       
+            if (pro.type_user== 'cdd' and user.type_user=='cadre_bud'):
+                notif = notification(pv=pv, notified_user=pro, modifier_user=user , date=datetime.now())
+                notif.save()
+    
+def get_notifications(user):
+    n = notification.objects.filter(notified_user=user)
+    if n.exists:
+        return n
